@@ -58,7 +58,20 @@ public sealed partial class GrateConfigurationBuilder
         _grateConfiguration = _grateConfiguration with { Folders = folders };
         return this;
     }
-    
+
+    /// <summary>
+    /// Specify the folder configuration to use for the migration, i.e the
+    /// names of the folders and the migration type. Default is the grate default folder configuration,
+    /// using 'up', 'functions', 'views', 'sprocs', 'triggers', 'indexes', 'permissions' and 'after_migration'.
+    /// </summary>
+    /// <param name="folderConfig">The configuration string can be either a semicolon separated list or a path to a configuration file</param>
+    /// <returns>GrateConfigurationBuilder</returns>
+    public GrateConfigurationBuilder WithFolders(string folderConfig)
+    {
+        IFoldersConfiguration folders = FoldersConfiguration.Parse(folderConfig);
+        _grateConfiguration = _grateConfiguration with { Folders = folders };
+        return this;
+    }
 
     /// <summary>
     /// Specify the schema name to use for the migration. Default 'grate'

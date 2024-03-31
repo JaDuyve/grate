@@ -1,5 +1,4 @@
 ﻿using FluentAssertions;
-using grate.Commands;
 using grate.Configuration;
 using grate.Migration;
 
@@ -14,7 +13,7 @@ public class FoldersCommand_
     [MemberData(nameof(FileFoldersCommandLines))]
     public void Can_Parse(string argument, IFoldersConfiguration expected)
     {
-        var actual = FoldersCommand.Parse(argument);
+        var actual = FoldersConfiguration.Parse(argument);
 
         actual.Should().NotBeNull();
 

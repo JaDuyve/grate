@@ -86,7 +86,7 @@ internal sealed class MigrateCommand : RootCommand
 
 #pragma warning disable CA1826
             // The code that's violating the rule is on this line.
-            result => FoldersCommand.Parse(result?.Tokens?.FirstOrDefault()?.ToString()),
+            result => FoldersConfiguration.Parse(result?.Tokens?.FirstOrDefault()?.ToString()),
 #pragma warning restore CA1826
             description:
 @"Folder configuration.
